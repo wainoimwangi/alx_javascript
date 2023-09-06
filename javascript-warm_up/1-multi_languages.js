@@ -1,3 +1,4 @@
+#!/usr/bin/node
 // scrpt that prints three lines
 
 let firstline = 'C is fun';
