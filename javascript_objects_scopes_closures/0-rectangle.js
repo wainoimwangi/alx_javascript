@@ -1,3 +1,3 @@
-// create an empty class rectangle
+class Rectangle {}
 
-module.exports = class Rectangle {};
+module.exports = Rectangle;
