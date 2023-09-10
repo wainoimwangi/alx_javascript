@@ -4,5 +4,3 @@
 class Rectangle {
     // empty class with no property or methods
 }
-
-module.exports = Rectangle;
