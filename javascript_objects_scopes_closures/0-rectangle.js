@@ -1,6 +1,6 @@
 #!/usr/bin/node
 // create an empty class rectangle
 
-class Rectangle {
+module.exports = class Rectangle {
     // empty class with no property or methods
-}
+};
