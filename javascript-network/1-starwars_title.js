@@ -2,7 +2,7 @@
 const request = require('request');
 
 const id = process.argv[2];
-const starWars = `https://swapi-api.alx-tools.com/api/films/:id`;
+const starWars = `https://swapi-api.alx-tools.com/api/films/${process.argv[2]}`;
 
 request(starWars, (error, response, body) => {
     if (error) {
