@@ -11,7 +11,7 @@ if (process.argv.length < 3) {
 // get the url from commandline arg
 const url = process.argv[2];
 
-request.get(url, function (error, response) {
+request.get(url, (error, response) => {
     if (error) {
         console.error('Error:', error.message);
         process.exit(1);
