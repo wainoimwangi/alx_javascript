@@ -17,7 +17,7 @@ request(url, (error, response, body) => {
 
     let wedge = 0;
 
-    filmData.results.forEach((film) => {
+    data.results.forEach((film) => {
         if (film.characters.includes('https://swapi-api.alx-tools.com/api/people/18/')) {
           wedge++;
         }
