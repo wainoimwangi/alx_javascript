@@ -16,5 +16,5 @@ request(starWars, (error, response, body) => {
 
     const data = JSON.parse(body);
 
-    console.log(`Title: ${data.title}`);
+    console.log(`${data.title}`);
 });
