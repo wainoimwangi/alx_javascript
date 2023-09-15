@@ -12,15 +12,15 @@ request(url, (error, response, body) => {
         console.error(`HTTP Error: ${response.statusCode}`);
         process.exit(1);
     }
-    const filmData = JSON.parse(body);
+    const data = JSON.parse(body);
 
-    let wedgeAntillesMovies = 0;
+    let wedgeId = 0;
 
-    filmData.results.forEach((film) => {
-        if (film.characters.includes('https://swapi-api.alx-tools.com/api/people/18')) {
-          wedgeAntillesMovies++;
+    data.results.forEach((film) => {
+        if (film.characters.includes('https://swapi-api.com/api/people/18/')) {
+          wedgeId++;
         }
     });
 
-    console.log(`${wedgeAntillesMovies}`);
+    console.log(`${wedgeId}`);
 });
