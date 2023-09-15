@@ -2,25 +2,21 @@
 const request = require('request');
 
 const url = process.argv[2];
+const id = '18';
+let num = 0;
 
-request(url, (error, response, body) => {
+request.get(url, (error, response, body) => {
     if (error) {
-      console.error('Error:', error.message);
-      process.exit(1);
+        console.log(error);
+    } else {
+        const data = JSON.parse(body);
+        data.results.forEach((film) => {
+            film.characters.forEach((character) => {
+                if (character.includes(id)) {
+                    num++;
+                }
+            });
+        });
+        console.log(num);
     }
-    if (response.statusCode !== 200) {
-        console.error(`HTTP Error: ${response.statusCode}`);
-        process.exit(1);
-    }
-    const data = JSON.parse(body);
-
-    let wedgeId = 0;
-
-    data.results.forEach((film) => {
-        if (film.characters.includes('https://swapi-api.com/api/people/18/')) {
-          wedgeId++;
-        }
-    });
-
-    console.log(`${wedgeId}`);
 });
