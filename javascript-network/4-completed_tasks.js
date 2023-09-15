@@ -19,7 +19,5 @@ request(url, (error, response, body) => {
             completeTasks[userId] = 1;
         }
     });
-    for (const userId in completeTasks) {
-        console.log(completeTasks);
-    }
+    console.log(completeTasks);
 });
