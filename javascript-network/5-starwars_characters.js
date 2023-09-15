@@ -2,9 +2,9 @@
 const request = require('request');
 
 const movieId = process.argv[2];
-const url = process.arv[3];
+const url = process.argv[3];
 
-request(url, (error, response, body) => {
+request(url + movieId, (error, response, body) => {
     if (error) {
         console.log(error);
         return;
