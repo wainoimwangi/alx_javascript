@@ -3,7 +3,7 @@ const request = require('request');
 
 const url = process.sys.argv[2];
 
-request(url, { json: true }, (error, response, body) => {
+request(url, (error, response, body) => {
     if (error) {
         console.log(error);
         return;
@@ -20,6 +20,6 @@ request(url, { json: true }, (error, response, body) => {
         }
     });
     for (const userId in completeTasks) {
-        console.log(`{'${userId}': ${completedTasks[userId]}}`);
+        console.log(`{'${userId}': ${completeTasks[userId]}}`);
     }
 });
