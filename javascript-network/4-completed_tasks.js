@@ -20,6 +20,6 @@ request(url, (error, response, body) => {
         }
     });
     for (const userId in completeTasks) {
-        console.log(`{'${userId}': ${completeTasks[userId]}}`);
+        console.log(completeTasks);
     }
 });
