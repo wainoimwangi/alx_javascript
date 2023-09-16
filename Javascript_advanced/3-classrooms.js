@@ -15,8 +15,4 @@ function createClassRoom(numberOfStudents) {
     return students;
     
     let classRoom = createClassRoom(10);
-
-    for (let i = 1; i <= classRoom.length; i++) {
-        console.log(classRoom);
-    }
 }
