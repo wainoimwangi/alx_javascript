@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookies local storage</title>
+</head>
+<body>
+    <h1>Login to the website</h1>
+    <input type="text" id="firstname" placeholder="Firstname">
+    <input type="text" id="email" placeholder="Email">
+    <button id="setCookiesButton" type="submit" onclick="setCookies()">Log me in</button>
+    <h1>Cookies</h1>
+    <button id="showCookiesButton" type="submit" onclick="showCookies()">Show the cookies</button>
+    <div id="Cookies"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+    <script>
+        function setCookies() {
+            const firstname = document.getElementById('firstname').value;
+            const email = document.getElementById('email').value;
+
+            document.cookie = `firstname=${firstname}; expires=${new Date(
+                Date.now() + 10 * 24 * 60 * 60 * 1000 // 10 days in milliseconds
+            ).toUTCString()}; path=/`;
+
+            document.cookie = `email=${email}; expires=${new Date(
+                Date.now() + 10 * 24 * 60 * 60 * 1000 // 10 days in milliseconds
+            ).toUTCString()}; path=/`;
+
+            alert('Cookies set');
+        }
+        function showCookies() {
+            const cookiesContainer = document.getElementById('Cookies');
+            const nameCookie = getCookie('firstname');
+            const emailCookie = getCookie('email');
+
+            const paragraph = document.createElement('p');
+            paragraph.innerHTML = `Email: ${emailCookie} - First Name: ${nameCookie}`;
+
+            cookiesContainer.innerHTML = '';
+            cookiesContainer.appendChild(paragraph);
+        }
+        function getCookie(name) {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.startsWith(name)) {
+                    return cookie.substring(name.length + 1);
+                } else {
+                    return '';
+                }
+            }
+        }
+
+        document.getElementById('setCookiesButton').addEventListener('click', setCookies);
+        document.getElementById('showCookiesButton').addEventListener('click', showCookies);
+    </script>
+</body>
+</html>
