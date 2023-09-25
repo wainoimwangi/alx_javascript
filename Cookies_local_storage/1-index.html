@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookies local storage</title>
+</head>
+<body>
+    <h1>Login to the website</h1>
+    <label for="firstname">Firstname</label>
+    <input type="text" id="firstname">
+    <label for="email">Email</label>
+    <input type="text" id="email">
+    <button id="setCookies">Log me in</button>
+    <h1>Cookies</h1>
+    <button id="showCookies">Show the cookies</button>
+
+    <script>
+        import Cookies from 'js-cookie';
+
+        function setCookies() {
+            const firstname = document.getElementById('firstname').value;
+            const email = document.getElementById('email').value;
+
+            document.cookie = `firstname=${firstname}; expires=${new Date(
+                Date.now() + 10 * 24 * 60 * 60 * 1000 // 10 days in milliseconds
+            ).toUTCString()}; path=/`;
+
+            document.cookie = `email=${email}; expires=${new Date(
+                Date.now() + 10 * 24 * 60 * 60 * 1000 // 10 days in milliseconds
+            ).toUTCString()}; path=/`;
+
+        }
+        function showCookies() {
+            const cookiesContainer = document.getElementById('showCookies');
+            const nameCookie = Cookies.get('firstame');
+            const emailCookie = Cookies.get('email');
+
+            const paragraph = document.createElement('p');
+            paragraph.innerHTML = `Cookies:<br>First Name: ${firstnameCookie}<br>Email: ${emailCookie}`;
+
+            cookiesContainer.appendChild(paragraph);
+        }
+
+        document.getElementById('setCookies').addEventListener('click', setCookies);
+        document.getElementById('showCookies').addEventListener('click', showCookies);
+    </script>
+</body>
+</html>
