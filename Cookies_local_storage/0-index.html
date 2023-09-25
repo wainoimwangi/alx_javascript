@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookies local storage</title>
+</head>
+<body>
+    <h1>Login to the website</h1>
+    <label for="firstname">Firstname</label>
+    <input type="text" id="firstname">
+    <label for="email">Email</label>
+    <input type="text" id="email">
+    <button id="setCookies">Log me in</button>
+    <h1>Cookies</h1>
+    <button id="showCookies">Show the cookies</button>
+
+    <script>
+        import Cookies from 'js-cookie';
+
+        function setCookies() {
+            let firstnameInput = document.getElementById('firstname');
+            let emailInput = document.getElementById('email');
+
+            const firstnamevalue = firstnameInput.value;
+            const emailvalue = emailInput.value;
+
+            document.cookie = `firstname=${firstnameValue}`;
+            document.cookie = `email=${emailValue}`;
+
+            firstnameInput.value = '';
+            emailInput.value = '';
+        }
+        function showCookies() {
+            const cookiesArray = document.cookie.split(';');
+
+            const par = document.createElement('p');
+
+            let cookieT = 'Cookies: ';
+
+            for (const cookie of cookieArray) {
+                const [name, value] = cookie.trim().split('=');
+                cookieT += `${name}=${value};`;
+            }
+            paragraph.innerHTML = cookieT;
+            document.body.appendchild(paragraph);
+        }
+    </script>
+</body>
+</html>
