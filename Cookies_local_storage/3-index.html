@@ -12,7 +12,7 @@
         <input type="text" id="email" placeholder="Email">
         <button id="setCookiesButton" type="submit" onclick="setCookies()">Log me in</button>
     </div>
-    <div id="Cookies">
+    <div id="Cookies" style="display: none;">
         <h1>Cookies</h1>
         <button id="showCookiesButton" type="submit" onclick="showCookies()">Show the cookies</button>
     </div>
@@ -31,7 +31,6 @@
                 Date.now() + 10 * 24 * 60 * 60 * 1000 // 10 days in milliseconds
             ).toUTCString()}; path=/`;
 
-            alert('Cookies set');
         }
         function showCookies() {
             const cookiesContainer = document.getElementById('Cookies');
