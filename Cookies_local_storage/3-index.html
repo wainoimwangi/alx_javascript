@@ -30,7 +30,6 @@
             document.cookie = `email=${email}; expires=${new Date(
                 Date.now() + 10 * 24 * 60 * 60 * 1000 // 10 days in milliseconds
             ).toUTCString()}; path=/`;
-
         }
         function showCookies() {
             const cookiesContainer = document.getElementById('Cookies');
@@ -40,8 +39,7 @@
             const paragraph = document.createElement('p');
             paragraph.innerHTML = `Email: ${emailCookie} - First Name: ${nameCookie}`;
 
-            cookiesContainer.innerHTML = '';
-            cookiesContainer.appendChild(paragraph);
+            document.body.appendChild(paragraph);
         }
         function getCookie(name) {
             const cookies = document.cookie.split(';');
@@ -55,17 +53,15 @@
             }
         }
         function showForm() {
-            const welcome = document.getElementById('welcomeMessage');
             const loginForm = document.getElementById('form');
 
-            if (welcome) {
-                welcome.remove();
-            }
             loginForm.style.display = 'block';
+
+            loginForm.addEventListener('click', showWelcomeMessageOrForm())
         }
         function hideForm() {
             const loginForm = document.getElementById('form');
-            loginLink.style.display = 'none'; 
+            loginForm.style.display = 'none'; 
         }
         function deleteCookiesAndShowForm() {
             Cookies.remove('Cookies')
@@ -78,9 +74,11 @@
             const firstnameCookie = getCookie('firstname');
 
             if (firstnameCookie) {
+                //console.log(firstnameCookie);
                 // User is logged in, display welcome message
                 const welcomeMessage = document.createElement('h1');
                 welcomeMessage.innerHTML = `Welcome: ${firstnameCookie} <a id="logout-link" href="#">(logout)</a>`;
+                document.body.appendChild(welcomeMessage);
                 
                 // Style the logout link
                 const logoutLink = welcomeMessage.querySelector('#logout-link');
@@ -88,16 +86,14 @@
                 logoutLink.style.fontStyle = 'italic';
                 logoutLink.style.marginLeft = '10px';
 
+                welcomeMessage.style.display = 'block';
+
                 // Add a click event to the logout link
                 logoutLink.addEventListener('click', function () {
-                    showForm();
                     deleteCookiesAndShowForm();
                     welcomeMessage.style.display = 'none'; // Hide the welcome message
                 });
 
-                // Replace the body with the welcome message
-                cookiesContainer.innerHTML = '';
-                cookiesContainer.appendChild(welcomeMessage);
             } else {
                 // User is not logged in, show the login form
                 showForm();
@@ -108,8 +104,9 @@
         showWelcomeMessageOrForm();
 
 
-        document.getElementById('setCookiesButton').addEventListener('click', setCookies);
-        document.getElementById('showCookiesButton').addEventListener('click', showCookies);
+        document.getElementById('setCookiesButton').addEventListener('click', function () {
+            setCookies();
+        });
     </script>
 </body>
 </html>

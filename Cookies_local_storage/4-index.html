@@ -40,17 +40,12 @@
             cookiesContainer.appendChild(paragraph);
         }
         function showForm() {
-            const welcome = document.getElementById('welcomeMessage');
-            const loginForm = document.getElementById('form');
-
-            if (!welcome) {
-                loginForm.style.display = 'block';
-            }
-            deleteCookiesAndShowForm();
+            const displayForm = document.getElementById('form');
+            displayForm.style.display = 'block';
         }
         function hideForm() {
             const loginForm = document.getElementById('form');
-            loginLink.style.display = 'none'; 
+            loginForm.style.display = 'none'; 
         }
         function deleteCookiesAndShowForm() {
             Cookies.remove('Cookies')
