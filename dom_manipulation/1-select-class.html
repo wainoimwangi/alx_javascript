@@ -13,7 +13,9 @@
   <p>This is a normal paragraph.</p>
   <script>
     const boldhighlight = document.querySelectorAll('.highlight');
-    boldhighlight[0].style.fontWeight = 'bold';
+    boldhighlight.forEach(item => {
+        item.style.fontWeight = 'Bold';
+    })
   </script>
 </body>
 </html>
