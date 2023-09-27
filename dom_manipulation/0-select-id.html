@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DOM Introduction</title>
+</head>
+<body>
+  <p id="myParagraph">This is a paragraph.</p>
+  <script>
+    const paragraph = document.getElementById('myParagraph');
+    paragraph.textContent = 'I successfully updated this paragraph with javascript';
+    document.body.appendChild(paragraph);
+  </script>
+</body>
+</html>
